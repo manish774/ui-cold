@@ -1,0 +1,79 @@
+[
+  {
+    "day": 1,
+    "name": "Kudle Beach",
+    "description": "A scenic beach for relaxation and sunset views.",
+    "activities": ["Beach lounging", "Strolling"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 1,
+    "name": "Gokarna Main Beach",
+    "description": "Central beach near Mahabaleshwar Temple, showcasing local culture.",
+    "activities": ["Cultural exploration", "Beach walks"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 1,
+    "name": "Artjuna",
+    "description": "A trendy cafe with a relaxed atmosphere, offering organic food and yoga classes.",
+    "activities": ["Café experience", "Yoga"],
+    "timing": "8:00 AM to 10:00 PM"
+  },
+  {
+    "day": 2,
+    "name": "Om Beach",
+    "description": "Shaped like the 'Om' symbol, offering water sports and stunning views.",
+    "activities": ["Banana boat rides", "Parasailing", "Surfing"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 2,
+    "name": "Half Moon Beach",
+    "description": "Secluded and less crowded, accessible by boat or trekking.",
+    "activities": ["Beach relaxation", "Trekking"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 2,
+    "name": "Namaste Café",
+    "description": "A popular beachfront café with a diverse menu and a chill ambiance.",
+    "activities": ["Beachside dining", "Relaxation"],
+    "timing": "8:00 AM to 10:00 PM"
+  },
+  {
+    "day": 3,
+    "name": "Mahabaleshwar Temple",
+    "description": "Ancient temple dedicated to Lord Shiva with Dravidian architecture.",
+    "activities": ["Temple visit", "Religious rituals"],
+    "timing": "Morning: 6:00 AM to 12:30 PM, Evening: 5:00 PM to 8:30 PM"
+  },
+  {
+    "day": 3,
+    "name": "Paradise Beach",
+    "description": "Accessible by boat, known for white sand and clear waters.",
+    "activities": ["Beach relaxation", "Boating"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 3,
+    "name": "Mirjan Fort",
+    "description": "Historic fort with architectural beauty and panoramic views.",
+    "activities": ["Fort exploration", "Scenic views"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 3,
+    "name": "Yana Rocks",
+    "description": "Rock formations a bit farther from Gokarna with unique geological features.",
+    "activities": ["Nature exploration", "Photography"],
+    "timing": "Open all day"
+  },
+  {
+    "day": 3,
+    "name": "Koti Tirtha",
+    "description": "A sacred pond near Mahabaleshwar Temple, believed to have medicinal properties.",
+    "activities": ["Religious rituals", "Cultural experience"],
+    "timing": "Open all day"
+  }
+]

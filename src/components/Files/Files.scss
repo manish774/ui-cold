@@ -1,0 +1,93 @@
+/* Files.scss */
+
+.drag-drop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+.drag-drop-container:hover {
+  box-shadow: 6px 6px 12px #d9d9d9, -6px -6px 12px #ffffff;
+}
+
+.input-container-file {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 15px;
+  border: 2px dashed #ccc; /* Added border style */
+  border-radius: 8px; /* Added border radius */
+  padding: 10px; /* Added padding to visually separate the border */
+  text-align: center;
+}
+
+.input-container-file input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.preview-panel-files {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.preview-panel-files img {
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add Neumorphic styles to the preview button */
+
+.file-prev-container {
+  font-size: 10px;
+  .btn-remove {
+    position: relative;
+    left: 30px;
+    top: 34px;
+    height: 20px;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+  }
+  .default-file-icon {
+    font-size: 40px;
+  }
+  .file-name {
+    display: inline-block;
+    max-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+  }
+  .file-name::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    display: none;
+  }
+}

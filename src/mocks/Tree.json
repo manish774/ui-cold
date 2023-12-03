@@ -1,0 +1,254 @@
+[
+  {
+    "id": 1,
+    "name": "Amitabh Bachchan",
+    "shopName": "Big B's Store",
+    "children": [
+      {
+        "id": 2,
+        "name": "Abhishek Bachchan",
+        "shopName": "Abhi's Corner",
+        "children": [
+          {
+            "id": 3,
+            "name": "Aaradhya Bachchan",
+            "shopName": "Aara's Toys"
+          },
+          {
+            "id": 4,
+            "name": "Shweta Bachchan Nanda",
+            "shopName": "Shweta's Boutique",
+            "children": [
+              {
+                "id": 5,
+                "name": "Navya Naveli Nanda",
+                "shopName": "Navya's Creations"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Dharmendra",
+    "shopName": "Dharmendra's Emporium",
+    "children": [
+      {
+        "id": 7,
+        "name": "Sunny Deol",
+        "shopName": "Sunny's Furniture",
+        "children": [
+          {
+            "id": 8,
+            "name": "Karan Deol",
+            "shopName": "Karan's Electronics"
+          },
+          {
+            "id": 9,
+            "name": "Esha Deol",
+            "shopName": "Esha's Boutique",
+            "children": [
+              {
+                "id": 10,
+                "name": "Radhya Takhtani",
+                "shopName": "Radhya's Accessories"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Bobby Deol",
+        "shopName": "Bobby's Fashion Hub",
+        "children": [
+          {
+            "id": 12,
+            "name": "Aryaman Deol",
+            "shopName": "Aryaman's Sportswear"
+          },
+          {
+            "id": 13,
+            "name": "Dharam Deol",
+            "shopName": "Dharam's Books & More"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Shah Rukh Khan",
+    "shopName": "SRK's Mega Mall",
+    "children": [
+      {
+        "id": 15,
+        "name": "Aryan Khan",
+        "shopName": "Aryan's Tech World",
+        "children": [
+          {
+            "id": 16,
+            "name": "Suhana Khan",
+            "shopName": "Suhana's Fashion"
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "name": "Abram Khan",
+        "shopName": "Abram's Toyland",
+        "children": [
+          {
+            "id": 18,
+            "name": "Gauri Khan",
+            "shopName": "Gauri's Home Decor"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Deepika Padukone",
+    "shopName": "Deepika's Couture",
+    "children": [
+      {
+        "id": 20,
+        "name": "Ranveer Singh",
+        "shopName": "Ranveer's Trends",
+        "children": [
+          {
+            "id": 21,
+            "name": "Taimur Ali Khan",
+            "shopName": "Taimur's Playhouse"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "name": "Kareena Kapoor Khan",
+        "shopName": "Kareena's Beauty Corner",
+        "children": [
+          {
+            "id": 23,
+            "name": "Saif Ali Khan",
+            "shopName": "Saif's Fine Dining"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Raj Kapoor",
+    "shopName": "Raj Kapoor's Legacy",
+    "children": [
+      {
+        "id": 25,
+        "name": "Rishi Kapoor",
+        "shopName": "Rishi's Memorabilia",
+        "children": [
+          {
+            "id": 26,
+            "name": "Ranbir Kapoor",
+            "shopName": "Ranbir's Art Studio"
+          },
+          {
+            "id": 27,
+            "name": "Kareena Kapoor Khan",
+            "shopName": "Kareena's Beauty Corner"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Aamir Khan",
+    "shopName": "Aamir's Supermart",
+    "children": [
+      {
+        "id": 29,
+        "name": "Ira Khan",
+        "shopName": "Ira's Book Emporium"
+      },
+      {
+        "id": 30,
+        "name": "Junaid Khan",
+        "shopName": "Junaid's Tech Hub"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Priyanka Chopra",
+    "shopName": "Priyanka's Fashion House",
+    "children": [
+      {
+        "id": 32,
+        "name": "Nick Jonas",
+        "shopName": "Nick's Music World"
+      },
+      {
+        "id": 33,
+        "name": "Sophie Turner",
+        "shopName": "Sophie's Art Gallery"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Hrithik Roshan",
+    "shopName": "Hrithik's Fitness Zone",
+    "children": [
+      {
+        "id": 35,
+        "name": "Sussanne Khan",
+        "shopName": "Sussanne's Home Essentials",
+        "children": [
+          {
+            "id": 36,
+            "name": "Hrehaan Roshan",
+            "shopName": "Hrehaan's Outdoor Gear"
+          },
+          {
+            "id": 37,
+            "name": "Hridhaan Roshan",
+            "shopName": "Hridhaan's Adventure Corner"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Alia Bhatt",
+    "shopName": "Alia's Chic Boutique",
+    "children": [
+      {
+        "id": 39,
+        "name": "Varun Dhawan",
+        "shopName": "Varun's Stylish Attire"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Salman Khan",
+    "shopName": "Salman's Mega Mart",
+    "children": [
+      {
+        "id": 41,
+        "name": "Arbaaz Khan",
+        "shopName": "Arbaaz's Sports Zone"
+      },
+      {
+        "id": 42,
+        "name": "Sohail Khan",
+        "shopName": "Sohail's Electronics Hub"
+      }
+    ]
+  }
+]

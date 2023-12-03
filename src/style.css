@@ -1,0 +1,28 @@
+.h-s:hover {
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  /* ...and now for the proper property */
+  transition: 0.5s;
+}
+
+.custom-spinner.__react-svg-spinner_circle {
+  transition-property: transform;
+  animation-name: custom-spinner_infinite-spin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes custom-spinner_infinite-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}

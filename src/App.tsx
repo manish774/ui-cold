@@ -10,6 +10,7 @@ import { Resizable } from "re-resizable";
 import Tree from "./components/Tree/Tree";
 import TreeData from "./mocks/Tree.json";
 import Files from "./components/Files/Files";
+import Notify from "./components/Notify/Notify";
 const App = () => {
   const [selectedRow, setSelectedRow] = useState(trip[0]);
   const [data, setData] = useState(trip);
@@ -181,7 +182,6 @@ const App = () => {
           />
         )}
       </Resizable>
-
       <Resizable style={{ border: "1px dotted gray", margin: "2px" }}>
         <button onClick={() => setDialogState(true)}>Open dialog</button>
         <Modal
@@ -222,6 +222,12 @@ const App = () => {
           maximumFiles={20}
           placeholder="Drop your files here !:)"
         />
+      </Resizable>
+      <Resizable>
+        <>
+          test
+          <Notify />
+        </>
       </Resizable>
     </>
   );

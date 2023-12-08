@@ -1,0 +1,33 @@
+.toast-container {
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.toast {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.toast--success {
+  background-color: green;
+}
+
+.button {
+  background-color: #fff;
+  color: #333;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Add a class for the fade-out animation */
+.toast-fade-out {
+  opacity: 0;
+}

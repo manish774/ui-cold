@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, Suspense, useEffect } from "react";
 import trip from "./mocks/Trip.json";
 import "./style.css";
 import Table from "./components/Table/Table";
@@ -10,11 +10,16 @@ import { Resizable } from "re-resizable";
 import Tree from "./components/Tree/Tree";
 import TreeData from "./mocks/Tree.json";
 import Files from "./components/Files/Files";
-import Notify from "./components/Notify/Notify";
+import React from "react";
+import Toast from "./components/Notify/Toast";
+import CopyToClipboardButton from "./components/Copy/Copy";
+import ImageZoomer from "./components/ImageZoomer/ImageZoomer";
 const App = () => {
-  const [selectedRow, setSelectedRow] = useState(trip[0]);
+  const [selectedRow, setSelectedRow] = useState({ name: "Manish", id: 1 });
   const [data, setData] = useState(trip);
   const [dialogState, setDialogState] = useState<boolean>(false);
+  const [message, setMessage] = useState<any>([]);
+
   const onClickName = (param: any) => {
     setSelectedRow({ ...param });
   };
@@ -136,6 +141,55 @@ const App = () => {
       },
     ],
   };
+
+  const apiConfig: tableConfig = {
+    paginationRequired: true,
+    showHeaderCount: false,
+    title: <h3>Gokarna </h3>,
+    minHeight: "400px",
+    columns: [
+      {
+        id: "id",
+        name: "ID",
+        searchable: true,
+        sortable: true,
+        highLight: { color: "rebeccapurple" },
+        hoverAction: [
+          { name: "Show details", onclick: (item) => getDeepDetails(item) },
+        ],
+      },
+
+      {
+        id: "login",
+        name: "User name",
+        sortable: true,
+        searchable: true,
+        render: (item: any) => {
+          return (
+            <div style={{ display: "flex" }}>
+              <p>{item?.login}</p>
+              <CopyToClipboardButton
+                textToCopy={`Username : ${item?.login}`}
+                style={{ float: "right" }}
+                copyButtonStyle={{
+                  beforeCopy: <button style={{ float: "right" }}>📄</button>,
+                  afterCopy: <button>.</button>,
+                }}
+              />
+            </div>
+          );
+        },
+      },
+      {
+        id: "avatar_url",
+        name: " Image icons",
+        render: (item) => {
+          return <ImageZoomer url={item?.avatar_url} initialScale={50} />;
+          //return <img src={item?.avatar_url} width={"50px"} />;
+        },
+      },
+    ],
+  };
   // ____________________________________
 
   const selectHandler = (e: any) => {
@@ -153,8 +207,27 @@ const App = () => {
     ],
   };
   //____________________________________________
+
+  useEffect(() => {
+    fetch("https://api.github.com/users")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+      });
+  }, []);
   return (
     <>
+      <Resizable>
+        <div>
+          <Toast
+          // ref={toastRef}
+          // message="This is a toast message."
+          // type="success"
+          // onClose={() => console.log("Toast closed")}
+          // timeout={33000}
+          />
+        </div>
+      </Resizable>
       <Resizable
         defaultSize={{
           width: "100%",
@@ -163,8 +236,10 @@ const App = () => {
         style={{ border: "1px dotted gray", margin: "2px" }}
       >
         <div>
+          <Suspense fallback={<>Loading...</>}>
+            <Table records={data || []} pageSize={10} config={apiConfig} />
+          </Suspense>
           {/* <Table records={data || []} pageSize={10} config={tableConfig} /> */}
-          <Table records={data || []} pageSize={10} config={tripConfig} />
         </div>
       </Resizable>
       <Resizable
@@ -179,6 +254,7 @@ const App = () => {
             dictionary={selectedRow}
             listHeading={{ name: "User stat", value: "values" }}
             enableCloseAction={true}
+            // config={listConfig}
           />
         )}
       </Resizable>
@@ -222,12 +298,6 @@ const App = () => {
           maximumFiles={20}
           placeholder="Drop your files here !:)"
         />
-      </Resizable>
-      <Resizable>
-        <>
-          test
-          <Notify />
-        </>
       </Resizable>
     </>
   );

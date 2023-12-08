@@ -1,3 +1,15 @@
+:root {
+  --main-color: hotpink;
+  --toast-success-hue: 150;
+  --toast-failure-hue: 20;
+  --toast-warning-hue: 205;
+  --toast-padding: 1.5em;
+  --toast-margin: 0.5em;
+  --toast-bg-color-fallback: hsl(var(--secondary-hue) 15% 100%);
+  --toast-text-color-fallback: hsl(var(--secondary-hue) 10% 25%);
+  --toast-opacity: 0.99;
+  --toast-content-gap: 1em;
+}
 .h-s:hover {
   -o-transition: 0.5s;
   -ms-transition: 0.5s;

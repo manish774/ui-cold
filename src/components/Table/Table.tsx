@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  Suspense,
+} from "react";
 import {
   generateRandomString,
   selectSubarray,
@@ -53,6 +59,7 @@ const Table = ({ records, config }: TableProps) => {
   }, []);
 
   useEffect(() => {
+    setTimeout(() => {}, 3000);
     setColumnNames(() => {
       return columns.map((rec, i) => (
         <th

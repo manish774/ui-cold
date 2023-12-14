@@ -50,11 +50,13 @@ const Files = ({
       }
     }
   };
+
   const removeFile = (e: any) => {
     setSelectedFiles(selectedFiles.filter((fil) => fil?.id !== e));
     if (selectedFiles?.length > 0) {
       setMaxError("");
     }
+    selectedFiles?.length === 0 && setIsFilesThere(false);
   };
 
   useEffect(() => {

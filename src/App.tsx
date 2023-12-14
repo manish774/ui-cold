@@ -11,136 +11,32 @@ import Tree from "./components/Tree/Tree";
 import TreeData from "./mocks/Tree.json";
 import Files from "./components/Files/Files";
 import React from "react";
-import Toast from "./components/Notify/Toast";
+import Toast from "./components/Toast/Toast";
 import CopyToClipboardButton from "./components/Copy/Copy";
 import ImageZoomer from "./components/ImageZoomer/ImageZoomer";
+import Skeleton from "./components/Skeleton/Skeleton";
+import { TableHeader } from "./components/generic/Table/TableHeader";
 const App = () => {
   const [selectedRow, setSelectedRow] = useState({ name: "Manish", id: 1 });
   const [data, setData] = useState(trip);
   const [dialogState, setDialogState] = useState<boolean>(false);
   const [message, setMessage] = useState<any>([]);
-
-  const onClickName = (param: any) => {
-    setSelectedRow({ ...param });
-  };
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const getDeepDetails = (param: any) => {
     setSelectedRow({ ...param });
   };
 
-  const deleteRecord = (record: any) => {
+  const deleteRecord = () => {
     //setData((prev) => data.filter((d) => d.id !== record.id));
   };
 
   // useEffect(() => {
 
   // }, [data, deleteRecord]);
-  const tableConfig: tableConfig = {
-    paginationRequired: true,
-    showHeaderCount: false,
-    title: <h3>Beautiful title</h3>,
-    columns: [
-      {
-        id: "name",
-        name: "User name",
-
-        searchable: true,
-        sortable: true,
-        hoverAction: [
-          { name: "Show details", onclick: (item) => getDeepDetails(item) },
-          { name: "Show", onclick: (item) => getDeepDetails(item) },
-        ],
-      },
-      {
-        id: "age",
-        name: "User age",
-        render: (item: any) => {
-          return item?.age;
-        },
-        searchable: true,
-        sortable: true,
-      },
-      {
-        id: "img",
-        name: "Icon",
-        render: (item: any) => {
-          return <img src={item?.img} height="20px" width="20px" />;
-        },
-      },
-      {
-        id: "amount",
-        name: "Value",
-        searchable: true,
-        hoverAction: [
-          { name: "Delete record", onclick: (item) => deleteRecord(item) },
-        ],
-      },
-    ],
-  };
-
-  const listConfig = [
-    {
-      id: "img",
-      name: "Image",
-      render: (item: any) => {
-        return <img src={item?.img} height="20px" width="20px" />;
-      },
-    },
-    {
-      id: "age",
-      name: "Age",
-    },
-    {
-      id: "amount",
-      name: "Percentage Covered",
-      render: (item: any) => {
-        return `${Math.round(item?.amount / 100)}%`;
-      },
-    },
-  ];
 
   // __________________________________
   // Trip
-  const tripConfig: tableConfig = {
-    paginationRequired: true,
-    showHeaderCount: false,
-    title: <h3>Gokarna </h3>,
-    minHeight: "400px",
-    columns: [
-      {
-        id: "name",
-        name: "User name",
-        searchable: true,
-        sortable: true,
-        highLight: { color: "rebeccapurple" },
-        hoverAction: [
-          { name: "Show details", onclick: (item) => getDeepDetails(item) },
-        ],
-      },
-      {
-        id: "timing",
-        name: "Open Time",
-        searchable: true,
-        hideAble: true,
-        hideOnstart: true,
-      },
-      {
-        id: "day",
-        name: "Day To visit",
-        sortable: true,
-      },
-      {
-        id: "activities",
-        name: "Activities to do",
-        highLight: { color: "gray" },
-        searchable: true,
-        render: (item: any) =>
-          item?.activities?.map((activity: any) => {
-            return <li>{activity}</li>;
-          }),
-      },
-    ],
-  };
 
   const apiConfig: tableConfig = {
     paginationRequired: true,
@@ -192,10 +88,6 @@ const App = () => {
   };
   // ____________________________________
 
-  const selectHandler = (e: any) => {
-    console.log(e);
-  };
-
   // ____________________Tree______________--
   const treeConfig: tableConfig = {
     title: "Tree Table",
@@ -209,11 +101,14 @@ const App = () => {
   //____________________________________________
 
   useEffect(() => {
-    fetch("https://api.github.com/users")
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
-      });
+    setTimeout(() => {
+      fetch("https://api.github.com/users")
+        .then((res) => res.json())
+        .then((res) => {
+          setData(res);
+          setIsLoaded(true);
+        });
+    }, 2000);
   }, []);
   return (
     <>
@@ -235,12 +130,37 @@ const App = () => {
         }}
         style={{ border: "1px dotted gray", margin: "2px" }}
       >
-        <div>
-          <Suspense fallback={<>Loading...</>}>
-            <Table records={data || []} pageSize={10} config={apiConfig} />
-          </Suspense>
-          {/* <Table records={data || []} pageSize={10} config={tableConfig} /> */}
-        </div>
+        {!isLoaded ? (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr></tr>
+              </tbody>
+            </table>
+            {[1, 2, 3].map(() => {
+              return (
+                <Skeleton
+                  type={"line"}
+                  style={{
+                    width: "100px",
+                  }}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div>
+            <Suspense fallback={<>Loading...</>}>
+              <Table records={data || []} pageSize={10} config={apiConfig} />
+            </Suspense>
+            {/* <Table records={data || []} pageSize={10} config={tableConfig} /> */}
+          </div>
+        )}
       </Resizable>
       <Resizable
         defaultSize={{

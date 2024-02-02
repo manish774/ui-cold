@@ -21,6 +21,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Nav } from "./components/Navigation/Navigations";
 import { ThemeContext, useTheme } from "./context/Theme/ThemeContext";
 import Badge from "./components/Badge/Badge";
+import CircleBadge from "./components/Badge/CircleBadge";
 const App = () => {
   const [selectedRow, setSelectedRow] = useState({ name: "Manish", id: 1 });
   const [data, setData] = useState(trip);
@@ -184,7 +185,13 @@ const App = () => {
       <br />
       <br />
       <br />
-
+      <CircleBadge
+        size={"small"}
+        labels={["Manish Kumar", "Priyanka Kumari", "Test", "Sumit kumar"]}
+      />
+      <br />
+      <br />
+      <br />
       <button
         onClick={() => {
           ctx?.toggleTheme();

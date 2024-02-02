@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "../generic/Input";
 import "./Files.scss";
 import { generateRandomString, getFileType } from "../../utils/Index";
+import ImageZoomer from "../ImageZoomer/ImageZoomer";
 
 type FilesProps = {
   isMultipleUpload?: boolean;
@@ -75,7 +76,13 @@ const Files = ({
         </button>
         <div style={{ textAlign: "center" }} className="file">
           {file?.type === "image" ? (
-            <img src={file?.path} />
+            <>
+              {false ? (
+                <img src={file?.path} />
+              ) : (
+                <ImageZoomer url={file?.path} initialScale={1} />
+              )}
+            </>
           ) : (
             <div className="default-file-icon">&#9926;</div>
           )}

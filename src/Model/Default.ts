@@ -1,6 +1,8 @@
 export type ThemeMode = "dark" | "light";
 
 export interface tableConfig {
+  selectAll?: boolean;
+  checkbox?: boolean;
   paginationRequired?: boolean;
   mode?: ThemeMode;
   title: string | JSX.Element;

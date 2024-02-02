@@ -1,40 +1,21 @@
-:root {
-  --main-color: hotpink;
-  --toast-success-hue: 150;
-  --toast-failure-hue: 20;
-  --toast-warning-hue: 205;
-  --toast-padding: 1.5em;
-  --toast-margin: 0.5em;
-  --toast-bg-color-fallback: hsl(var(--secondary-hue) 15% 100%);
-  --toast-text-color-fallback: hsl(var(--secondary-hue) 10% 25%);
-  --toast-opacity: 0.99;
-  --toast-content-gap: 1em;
-}
-.h-s:hover {
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
-  /* ...and now for the proper property */
-  transition: 0.5s;
+[data-theme="light"] {
+  --bg-color: #fff;
+  --text-color: #333;
+  --heading-color: #444;
 }
 
-.custom-spinner.__react-svg-spinner_circle {
-  transition-property: transform;
-  animation-name: custom-spinner_infinite-spin;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+[data-theme="dark"] {
+  --bg-color: #333 !important;
+  --text-color: #fff !important;
+  --heading-color: gray;
 }
 
-@keyframes custom-spinner_infinite-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-.cursor-pointer {
-  cursor: pointer !important;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }

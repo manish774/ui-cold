@@ -1,4 +1,4 @@
-import { useRef, useState, Suspense, useEffect } from "react";
+import { useRef, useState, Suspense, useEffect, useContext } from "react";
 import trip from "./mocks/Trip.json";
 import "./style.css";
 import Table from "./components/Table/Table";
@@ -16,6 +16,11 @@ import CopyToClipboardButton from "./components/Copy/Copy";
 import ImageZoomer from "./components/ImageZoomer/ImageZoomer";
 import Skeleton from "./components/Skeleton/Skeleton";
 import { TableHeader } from "./components/generic/Table/TableHeader";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Nav } from "./components/Navigation/Navigations";
+import { ThemeContext, useTheme } from "./context/Theme/ThemeContext";
+import Badge from "./components/Badge/Badge";
 const App = () => {
   const [selectedRow, setSelectedRow] = useState({ name: "Manish", id: 1 });
   const [data, setData] = useState(trip);
@@ -27,6 +32,7 @@ const App = () => {
     setSelectedRow({ ...param });
   };
 
+  const ctx = useTheme();
   const deleteRecord = () => {
     //setData((prev) => data.filter((d) => d.id !== record.id));
   };
@@ -41,6 +47,8 @@ const App = () => {
   const apiConfig: tableConfig = {
     paginationRequired: true,
     showHeaderCount: false,
+    checkbox: true,
+    selectAll: true,
     title: <h3>Gokarna </h3>,
     minHeight: "400px",
     columns: [
@@ -60,6 +68,7 @@ const App = () => {
         name: "User name",
         sortable: true,
         searchable: true,
+        highLight: { color: "hotpink" },
         render: (item: any) => {
           return (
             <div style={{ display: "flex" }}>
@@ -79,6 +88,7 @@ const App = () => {
       {
         id: "avatar_url",
         name: " Image icons",
+        highLight: { color: "orange" },
         render: (item) => {
           return <ImageZoomer url={item?.avatar_url} initialScale={50} />;
           //return <img src={item?.avatar_url} width={"50px"} />;
@@ -110,25 +120,87 @@ const App = () => {
         });
     }, 2000);
   }, []);
+
+  const router = createBrowserRouter(Nav);
   return (
-    <>
-      <Resizable>
-        <div>
-          <Toast
-          // ref={toastRef}
-          // message="This is a toast message."
-          // type="success"
-          // onClose={() => console.log("Toast closed")}
-          // timeout={33000}
-          />
-        </div>
-      </Resizable>
+    <Resizable defaultSize={{ width: "100%", height: "20%" }}>
+      <div>
+        <Toast
+        // ref={toastRef}
+        // message="This is a toast message."
+        // type="success"
+        // onClose={() => console.log("Toast closed")}
+        // timeout={33000}
+        />
+      </div>
+      <br />
+      <Badge
+        label="Test badge"
+        size={"large"}
+        type={"bordered"}
+        theme={"success"}
+      />
+      <Badge
+        label="Test badge"
+        size={"medium"}
+        type={"bordered"}
+        theme={"primary"}
+      />
+      <Badge
+        label="Test badge"
+        size={"small"}
+        type={"bordered"}
+        theme={"secondary"}
+      />
+      <Badge
+        label="Test badge"
+        size={"medium"}
+        type={"bordered"}
+        theme={"danger"}
+      />
+      <br />
+      <br />
+      <br />
+      <Badge
+        label="Test badge"
+        size={"large"}
+        type={"default"}
+        theme={"success"}
+      />
+      <Badge
+        label="Test badge"
+        size={"medium"}
+        type={"default"}
+        theme={"primary"}
+      />
+      <Badge
+        label="Test badge"
+        size={"small"}
+        type={"default"}
+        theme={"secondary"}
+      />
+      <Badge label="Test badge" type={"default"} theme={"danger"} />
+
+      <br />
+      <br />
+      <br />
+
+      <button
+        onClick={() => {
+          ctx?.toggleTheme();
+        }}
+      >
+        Switch Theme
+      </button>
+      <div className="breadCrumbs">
+        <Breadcrumbs />
+      </div>
       <Resizable
         defaultSize={{
-          width: "100%",
+          width: "40%",
           height: "90%",
         }}
-        style={{ border: "1px dotted gray", margin: "2px" }}
+        style={{ border: "1px dotted gray" }}
       >
         {!isLoaded ? (
           <div>
@@ -164,10 +236,10 @@ const App = () => {
       </Resizable>
       <Resizable
         defaultSize={{
-          width: "100%",
+          width: "20%",
           height: "90%",
         }}
-        style={{ border: "1px dotted gray", margin: "2px" }}
+        style={{ border: "1px dotted gray" }}
       >
         {selectedRow && (
           <Cards
@@ -178,7 +250,7 @@ const App = () => {
           />
         )}
       </Resizable>
-      <Resizable style={{ border: "1px dotted gray", margin: "2px" }}>
+      <Resizable style={{ border: "1px dotted gray", width: "20%" }}>
         <button onClick={() => setDialogState(true)}>Open dialog</button>
         <Modal
           isDialogOpen={dialogState}
@@ -200,7 +272,7 @@ const App = () => {
           enableFooter={true}
         />
       </Resizable>
-      <Resizable style={{ border: "1px dotted gray", margin: "2px" }}>
+      <Resizable style={{ border: "1px dotted gray" }}>
         <div style={{ width: "80%" }}>
           <Tree records={TreeData} config={treeConfig} pageSize={10} />
         </div>
@@ -219,7 +291,15 @@ const App = () => {
           placeholder="Drop your files here !:)"
         />
       </Resizable>
-    </>
+      <RouterProvider router={router} />
+      <button
+        onClick={() => {
+          alert("mamish");
+        }}
+      >
+        Manish Kumar
+      </button>
+    </Resizable>
   );
 };
 

@@ -1,0 +1,44 @@
+.success {
+  --badge-color: #39ff14;
+}
+.primary {
+  --badge-color: #c0c0c0;
+}
+.secondary {
+  --badge-color: yellow;
+}
+.danger {
+  --badge-color: red;
+}
+[data-badge-type="default"] {
+  --bg-color: var(--badge-color);
+  --text-color: black;
+}
+[data-badge-type="bordered"] {
+  --text-color: var(--badge-color);
+  --border-color: var(--badge-color);
+  --bg-color: rgb(40, 44, 40);
+}
+
+.small {
+  --badge-font-size: 8px;
+  --badge-padding: 5px;
+}
+.large {
+  --badge-font-size: 14px;
+  --badge-padding: 14px;
+}
+.medium {
+  --badge-font-size: 10px;
+  --badge-padding: 8px;
+}
+
+.badge {
+  background-color: var(--bg-color);
+  border: 2px solid var(--border-color);
+  padding: var(--badge-padding);
+  font-size: var(--badge-font-size);
+  color: var(--text-color);
+  border-radius: 5px;
+  margin: 2px;
+}

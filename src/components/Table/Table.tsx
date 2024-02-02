@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useState,
   Suspense,
+  useRef,
 } from "react";
 import {
   generateRandomString,
@@ -19,6 +20,7 @@ import TableRows from "./TableRows";
 import { useDebounce } from "../../hooks/hooks";
 import { TableHeader } from "../generic/Table/TableHeader";
 import TableFooter from "../generic/Table/TableFooter";
+import Input from "../generic/Input";
 
 const Table = ({ records, config }: TableProps) => {
   const [currentPagination, setCurrentPagination] = useState<any>(1);
@@ -31,6 +33,7 @@ const Table = ({ records, config }: TableProps) => {
   const [searchText, setSearchText] = useState<string>("");
   const debounceSearch = useDebounce(searchText, 1000);
   const [theme, setTheme] = useState<ThemeMode>("light");
+  const selectedRecord: any = useRef(null);
   const [totalPage, setTotalPage] = useState(
     Math.ceil(completeRecord?.length / itemPerPage)
   );
@@ -59,24 +62,38 @@ const Table = ({ records, config }: TableProps) => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {}, 3000);
+    //setTimeout(() => {}, 3000);
     setColumnNames(() => {
       return columns.map((rec, i) => (
-        <th
-          style={{ background: rec?.highLight && rec?.highLight?.color }}
-          onClick={() => {
-            if (sortableColumns.includes(rec?.id)) {
-              sortColumn(rec?.id, columnSortState[rec?.id]);
-              setColumnSortState(() => ({
-                [rec?.id]: columnSortState[rec?.id] === ASC ? DESC : ASC,
-              }));
-            }
-          }}
-          className={`sort ${columnSortState[rec?.id]} `}
-          key={columnSortState[rec?.id]}
-        >
-          {rec?.name}
-        </th>
+        <>
+          {i === 0 && config?.checkbox && (
+            <th>
+              {config?.selectAll && (
+                <Input
+                  type="checkbox"
+                  value={""}
+                  onchangeHandler={() => {}}
+                  style={{ width: "20px" }}
+                />
+              )}
+            </th>
+          )}
+          <th
+            style={{ background: rec?.highLight && rec?.highLight?.color }}
+            onClick={() => {
+              if (sortableColumns.includes(rec?.id)) {
+                sortColumn(rec?.id, columnSortState[rec?.id]);
+                setColumnSortState(() => ({
+                  [rec?.id]: columnSortState[rec?.id] === ASC ? DESC : ASC,
+                }));
+              }
+            }}
+            className={`sort ${columnSortState[rec?.id]} `}
+            key={columnSortState[rec?.id]}
+          >
+            {rec?.name}
+          </th>
+        </>
       ));
     });
   }, [columnSortState, completeRecord, itemPerPage]);
@@ -156,6 +173,18 @@ const Table = ({ records, config }: TableProps) => {
 
   const rows = currentRecord?.map((record: any) => (
     <tr key={generateRandomString(10)}>
+      {config?.checkbox && (
+        <td>
+          <Input
+            type="checkbox"
+            style={{ width: "20px" }}
+            onchangeHandler={() => {
+              selectedRecord.current = [record];
+            }}
+            value={JSON.stringify(record)}
+          />
+        </td>
+      )}
       {columns?.map((col, i) => createCellContent(record, col, i))}
     </tr>
   ));
@@ -163,6 +192,7 @@ const Table = ({ records, config }: TableProps) => {
   const changeItemPerPage = (e: any) => {
     setItemPerPage(parseInt(e?.target?.value));
   };
+
   const clearInput = () => {
     setSearchText("");
   };

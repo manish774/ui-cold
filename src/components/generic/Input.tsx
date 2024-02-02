@@ -3,7 +3,7 @@ import { useDebounce } from "../../hooks/hooks";
 import "./generic.scss";
 interface InputProps {
   onchangeHandler: (value: string) => any;
-  type?: "number" | "text" | "email" | "file";
+  type?: "number" | "text" | "email" | "file" | "checkbox";
   max?: number;
   min?: number;
   value: any;
@@ -12,6 +12,7 @@ interface InputProps {
   placeholder?: string;
   multiple?: boolean;
   otherProps?: Record<string, number>;
+  style?: React.CSSProperties;
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
@@ -45,6 +46,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
   const labelPostionClass = () => {
     props?.labelPosition === "left";
   };
+
   return (
     <>
       <label
@@ -63,6 +65,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
         placeholder={props?.placeholder}
         multiple={props?.multiple || false}
         {...props?.otherProps}
+        style={props?.style}
       />
     </>
   );

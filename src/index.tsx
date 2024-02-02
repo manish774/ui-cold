@@ -1,7 +1,11 @@
 import ReactDOM from "react-dom";
 import App from "./App";
+import ThemeProvider from "./context/Theme/ThemeProvider";
 
-ReactDOM.render(<App />, document.getElementById("root"));
-
-// export * from "./components/Cards";
-// export * from "./components";
+import "./style.css";
+ReactDOM.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>,
+  document.getElementById("root")
+);

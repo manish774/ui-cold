@@ -16,7 +16,7 @@ const ImageZoomer: React.FC<ImageZoomerProps> = ({ url, initialScale }) => {
 
   return (
     <div>
-      <div style={{ position: "static", overflow: "hidden" }}>
+      <div style={{}}>
         <img
           src={url}
           width={`${initialScale}px`}
@@ -27,7 +27,9 @@ const ImageZoomer: React.FC<ImageZoomerProps> = ({ url, initialScale }) => {
         />
       </div>
       <div>
-        <button onClick={handleZoomIn}>+</button>
+        <button onClick={handleZoomIn} style={{ zIndex: "999" }}>
+          +
+        </button>
         <button onClick={handleZoomOut}>-</button>
       </div>
     </div>

@@ -7,8 +7,10 @@ const Breadcrumbs = () => {
     { label: "Best", navigate: "/test" },
   ];
   const prepareBreadCrumbs = (configs || []).map((config, i) => (
-    <span>
-      <a href={config?.navigate}>{config?.label}</a>
+    <span key={config.label}>
+      <a href={config?.navigate} key={config.label}>
+        {config?.label}
+      </a>
       {configs?.length !== i + 1 && " >> "}
     </span>
   ));

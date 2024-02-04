@@ -31,7 +31,9 @@ const Toast = () => {
   }, [toastStack]);
 
   const prepareUi = toastStack.map((toast) => (
-    <div className={`toast-container toast--success`}>{toast?.message}</div>
+    <div className={`toast-container toast--success`} key={toast?.message}>
+      {toast?.message}
+    </div>
   ));
 
   return (

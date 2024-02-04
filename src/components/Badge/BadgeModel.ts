@@ -1,14 +1,17 @@
-type size = "large" | "medium" | "small";
+import { size, theme } from "../../Model/Default";
+
 export type BadgeProps<T> = {
   label: T;
   bgColor?: string;
   size?: size;
   type?: "bordered" | "default";
-  theme?: "primary" | "secondary" | "success" | "danger";
+  theme?: theme;
   style?: React.CSSProperties;
 };
 
 export interface CircleBadgeProps<T> {
   labels: T[];
   size?: size;
+  type?: theme;
+  customColor?: { background: string; border: string };
 }

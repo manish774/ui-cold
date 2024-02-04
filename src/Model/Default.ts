@@ -1,5 +1,6 @@
 export type ThemeMode = "dark" | "light";
-
+export type size = "large" | "medium" | "small";
+export type theme = "primary" | "warning" | "success" | "danger";
 export interface tableConfig {
   selectAll?: boolean;
   checkbox?: boolean;

@@ -1,15 +1,16 @@
 .success {
-  --badge-color: #39ff14;
+  --badge-color: var(--success-color);
 }
 .primary {
-  --badge-color: #c0c0c0;
+  --badge-color: var(--primary-color);
 }
-.secondary {
-  --badge-color: yellow;
+.warning {
+  --badge-color: var(--warning-color);
 }
 .danger {
-  --badge-color: red;
+  --badge-color: var(--danger-color);
 }
+
 [data-badge-type="default"] {
   --bg-color: var(--badge-color);
   --text-color: black;

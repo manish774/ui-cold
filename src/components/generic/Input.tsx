@@ -1,74 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef } from "react";
 import { useDebounce } from "../../hooks/hooks";
 import "./generic.scss";
-interface InputProps {
-  onchangeHandler: (value: string) => any;
-  type?: "number" | "text" | "email" | "file" | "checkbox";
-  max?: number;
-  min?: number;
-  value: any;
-  label?: JSX.Element | string | number;
-  labelPosition?: "left" | "right" | "above" | "below";
-  placeholder?: string;
-  multiple?: boolean;
-  otherProps?: Record<string, number>;
-  style?: React.CSSProperties;
-}
+import { InputProps } from "../../Model/Input.module";
 
-const Input: React.FC<InputProps> = (props: InputProps) => {
-  const { onchangeHandler } = props;
-  const [inputValue, setInputValue] = useState<any>(props?.min || undefined);
-  const [eventObject, setEventObject] = useState<any>();
-  const debounceInput = useDebounce(eventObject, 500);
-  const labelPositionClasses = {
-    left: "left",
-    right: "right",
-    above: "above",
-    below: "below",
-  };
+const Input = forwardRef<HTMLInputElement, InputProps<string | number>>(
+  (props, ref) => {
+    const { onchangeHandler, className, debounceTime = 100 } = props;
 
-  useEffect(() => {
-    onchangeHandler(debounceInput);
-  }, [debounceInput]);
+    const [inputValue, setInputValue] = useState<any>(
+      props?.value || props?.min || undefined
+    );
+    const [eventObject, setEventObject] = useState<any>();
+    const debounceInput = useDebounce(eventObject, debounceTime);
+    const labelPositionClasses = {
+      left: "left",
+      right: "right",
+      above: "above",
+      below: "below",
+    };
 
-  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (
-      props?.type === "number" &&
-      props?.max &&
-      parseInt(e?.target?.value) > props?.max
-    ) {
-      return e.preventDefault();
-    }
-    setEventObject(e);
-    setInputValue(e?.target?.value);
-  };
+    useEffect(() => {
+      onchangeHandler(debounceInput);
+    }, [debounceInput]);
 
-  const labelPostionClass = () => {
-    props?.labelPosition === "left";
-  };
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (
+        props?.type === "number" &&
+        props?.max &&
+        parseInt(e?.target?.value) > props?.max
+      ) {
+        return e.preventDefault();
+      }
+      setEventObject(e);
+      setInputValue(e?.target?.value);
+    };
 
-  return (
-    <>
-      <label
-        className={`label-${
-          labelPositionClasses[props?.labelPosition || "left"]
-        }`}
-      >
-        {props?.label}
-      </label>
-      <input
-        type={props?.type}
-        onChange={changeHandler}
-        value={inputValue}
-        min={props?.min}
-        max={props?.max}
-        placeholder={props?.placeholder}
-        multiple={props?.multiple || false}
-        {...props?.otherProps}
-        style={props?.style}
-      />
-    </>
-  );
-};
+    const labelPostionClass = () => {
+      props?.labelPosition === "left";
+    };
+
+    return (
+      <>
+        <label
+          className={`label-${
+            labelPositionClasses[props?.labelPosition || "left"]
+          }`}
+        >
+          {props?.label}
+        </label>
+        <input
+          ref={ref}
+          type={props?.type}
+          onChange={changeHandler}
+          value={inputValue}
+          min={props?.min}
+          max={props?.max}
+          placeholder={props?.placeholder}
+          multiple={props?.multiple || false}
+          {...props?.otherProps}
+          style={props?.style}
+          className={className}
+        />
+      </>
+    );
+  }
+);
 
 export default Input;

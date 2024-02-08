@@ -62,7 +62,7 @@ const App = () => {
         ]}
         brandName={<>Brand</>}
       />
-      <Sidebar {...details} />
+      <Sidebar items={details} />
     </>
   );
 };

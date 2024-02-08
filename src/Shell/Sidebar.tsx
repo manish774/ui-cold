@@ -9,10 +9,10 @@ interface SidebarProps<I, N, L, RC> {
   isVisible: boolean;
   content: RC;
 }
-
-const Sidebar = (
-  props: SidebarProps<string | number, string, string, React.ReactElement>[]
-) => {
+interface SideProps {
+  items: SidebarProps<string | number, string, string, React.ReactElement>[];
+}
+const Sidebar = ({ items }: SideProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   let [collapseIcon, setCollapseIcon] = useState("<");
   const handleToggleCollapse = () => {
@@ -20,20 +20,15 @@ const Sidebar = (
     setCollapseIcon((prev) => (prev === "<" ? ">" : "<"));
   };
 
-  const [sidebarNavOptions, setSideBarNavOptions] = useState([
-    {
-      id: 2,
-      name: "Contact",
-      label: "Contact",
-      isVisible: false,
-      content: (
-        <Panel>
-          <h1>Contact me</h1>
-        </Panel>
-      ),
-    },
-  ]);
+  const initialSidebarNavOptions =
+    items ||
+    ([] as SidebarProps<string | number, string, string, React.ReactElement>[]);
 
+  const [sidebarNavOptions, setSideBarNavOptions] = useState(
+    initialSidebarNavOptions
+  );
+
+  console.log(sidebarNavOptions);
   const showContent = ({ id }: any) => {
     const showContentById = sidebarNavOptions?.map((s) => ({
       ...s,
@@ -42,7 +37,7 @@ const Sidebar = (
     setSideBarNavOptions(showContentById);
   };
 
-  const prepareNav = sidebarNavOptions?.map((nav) => (
+  const prepareNav = sidebarNavOptions.map((nav) => (
     <div
       key={nav?.name}
       className="nav-option"
@@ -63,12 +58,10 @@ const Sidebar = (
         <button onClick={handleToggleCollapse} className="toggle-sidebar">
           {collapseIcon}
         </button>
-        {sidebarNavOptions?.length && prepareNav}
+        {prepareNav}
       </aside>
       <section className="main-container">
-        <aside className="main-sidebar-right-container">
-          {sidebarNavOptions?.length && viewPanel}
-        </aside>
+        <aside className="main-sidebar-right-container">{viewPanel}</aside>
       </section>
     </>
   );

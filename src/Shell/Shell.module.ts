@@ -4,5 +4,6 @@ export type linkProps<R> = {
   linkTo: string;
 };
 export interface HeaderProps<T> {
-  links: linkProps<T>[];
+  linkRightPanel: linkProps<T>[];
+  brandName: React.ReactElement;
 }

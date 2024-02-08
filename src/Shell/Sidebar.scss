@@ -1,0 +1,47 @@
+aside.sidebar-container {
+  height: calc(100vh - 60px);
+  width: 150px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 3px 3px lightgray;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  z-index: 1;
+  padding-top: 50px;
+  transition: width 0.3s ease;
+  .nav-option:nth-child(2) {
+    border-top: 1px solid lightgray;
+  }
+  .nav-option {
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid lightgray;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+}
+
+aside.sidebar-container.collapsed {
+  width: 50px;
+}
+
+aside.sidebar-container > .toggle-sidebar {
+  position: absolute;
+  right: -0px;
+  top: 5px;
+  padding: 8px;
+  border: none;
+}
+
+.main-container {
+  margin-left: 0px;
+}
+
+.main-sidebar-right-container {
+  float: right;
+  width: calc(100% - 190px);
+  height: calc(100vh - 100px);
+  background-color: lightgrey;
+  padding: 20px;
+}

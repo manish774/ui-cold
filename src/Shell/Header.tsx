@@ -4,14 +4,28 @@ import { HeaderProps } from "./Shell.module";
 import { createBrowserRouter } from "react-router-dom";
 import { Nav, NavProps } from "../components/Navigation/Navigations";
 
-const Header = ({ links }: HeaderProps<React.ReactElement | string>) => {
-  const NavLinks = links?.map((l) => ({ path: l.linkTo, element: l?.label }));
+const Header = ({
+  linkRightPanel,
+  brandName,
+}: HeaderProps<React.ReactElement | string>) => {
+  const NavLinks = linkRightPanel?.map((l) => ({
+    path: l.linkTo,
+    element: l?.label,
+  }));
   const router = createBrowserRouter(Nav);
+
+  const handleActiveness = (e: any) => {};
+
   return (
     <header>
-      <div>
-        {links?.map((l) => (
-          <span>{l?.label}</span>
+      <a href="#default" className="logo">
+        {brandName}
+      </a>
+      <div className="header-right">
+        {NavLinks?.map((n) => (
+          <a href={n.path} onClick={handleActiveness}>
+            {n?.element}
+          </a>
         ))}
       </div>
     </header>

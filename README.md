@@ -26,3 +26,8 @@ Reusable badge components for displaying labels, statuses, or other contextual i
 import { Badge } from 'react-components-library';
 
 <Badge label="New" color="primary" />;
+
+```jsx
+import { Breadcrumbs } from 'react-components-library';
+
+<Breadcrumbs items={['Home', 'Dashboard', 'Reports']} />;

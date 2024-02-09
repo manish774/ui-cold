@@ -7,6 +7,7 @@ export type BadgeProps<T> = {
   type?: "bordered" | "default";
   theme?: theme;
   style?: React.CSSProperties;
+  title?: React.ReactElement | string;
 };
 
 export interface CircleBadgeProps<T> {
@@ -14,4 +15,6 @@ export interface CircleBadgeProps<T> {
   size?: size;
   type?: theme;
   customColor?: { background: string; border: string };
+  style?: React.CSSProperties;
+  title?: React.ReactElement | string;
 }

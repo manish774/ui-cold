@@ -22,14 +22,14 @@ import { TableHeader } from "../generic/Table/TableHeader";
 import TableFooter from "../generic/Table/TableFooter";
 import Input from "../generic/Input";
 
-const Table = ({ records, config }: TableProps) => {
+const Table = ({ records, config, pageSize }: TableProps) => {
   const [currentPagination, setCurrentPagination] = useState<any>(1);
   const [currentRecord, setCurrentRecords] = useState<any>([]);
   const [completeRecord, setCompleteRecord] = useState(records || []);
   const [rowCount, setRowCount] = useState(records?.length || 0);
   const [columnSortState, setColumnSortState] = useState<any>({});
   const [columnNames, setColumnNames] = useState<any>();
-  const [itemPerPage, setItemPerPage] = useState(paginationOptions[0]);
+  const [itemPerPage, setItemPerPage] = useState(pageSize || 5);
   const [searchText, setSearchText] = useState<string>("");
   const debounceSearch = useDebounce(searchText, 1000);
   const [theme, setTheme] = useState<ThemeMode>("light");

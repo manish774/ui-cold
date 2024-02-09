@@ -28,7 +28,6 @@ const Sidebar = ({ items }: SideProps) => {
     initialSidebarNavOptions
   );
 
-  console.log(sidebarNavOptions);
   const showContent = ({ id }: any) => {
     const showContentById = sidebarNavOptions?.map((s) => ({
       ...s,
@@ -38,19 +37,37 @@ const Sidebar = ({ items }: SideProps) => {
   };
 
   const prepareNav = sidebarNavOptions.map((nav) => (
-    <div
-      key={nav?.name}
-      className="nav-option"
-      onClick={() => {
-        showContent({ id: nav?.id });
-      }}
-    >
-      {nav?.label}
-    </div>
+    <>
+      <div
+        key={nav?.name}
+        className="nav-option"
+        onClick={() => {
+          showContent({ id: nav?.id });
+        }}
+        title={nav?.name}
+      >
+        <>{nav?.label}</>
+      </div>
+      <button
+        style={{ float: "right", marginTop: "-22px" }}
+        onClick={() => removeNav(nav?.id)}
+      >
+        x
+      </button>
+    </>
   ));
   const viewPanel = sidebarNavOptions?.map((nav) => (
     <div key={nav?.name}>{nav?.isVisible && nav?.content}</div>
   ));
+
+  const removeNav = (id: any) => {
+    if (sidebarNavOptions?.length > 1) {
+      const navs = sidebarNavOptions?.filter((n) => n?.id !== id);
+      navs[0].isVisible = true;
+      setSideBarNavOptions(navs);
+    }
+  };
+
   return (
     <>
       <aside className={`sidebar-container ${isCollapsed ? "collapsed" : ""}`}>

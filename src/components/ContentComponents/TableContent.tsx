@@ -30,7 +30,7 @@ const TableContent = () => {
 
   const config: tableConfig = {
     columns: [
-      { name: "name", id: "name" },
+      { name: "name", id: "name", searchable: true, sortable: true },
       { name: "Position", id: "position", highLight: { color: "pink" } },
       {
         name: "Position",
@@ -39,7 +39,12 @@ const TableContent = () => {
           return (
             <>
               <CircleBadge labels={[item?.name]} size={"small"} />
-              <Badge label={item?.name} type={"bordered"} theme={"warning"} />
+              <Badge
+                label={item?.name}
+                type={"bordered"}
+                theme={"warning"}
+                size={"small"}
+              />
             </>
           );
         },
@@ -50,7 +55,7 @@ const TableContent = () => {
   };
   return (
     <div>
-      <Table records={records} config={config} pageSize={1} />
+      <Table records={records} config={config} pageSize={5} />
     </div>
   );
 };

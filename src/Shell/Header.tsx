@@ -18,9 +18,7 @@ const Header = ({
 
   return (
     <header>
-      <a href="#default" className="logo">
-        {brandName}
-      </a>
+      <span className="logo">{brandName}</span>
       <div className="header-right">
         {NavLinks?.map((n) => (
           <a href={n.path} onClick={handleActiveness}>

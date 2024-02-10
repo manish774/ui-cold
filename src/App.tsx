@@ -10,6 +10,8 @@ import Cards from "./components/Cards";
 import Badge from "./components/Badge/Badge";
 import CircleBadge from "./components/Badge/CircleBadge";
 import TableContent from "./components/ContentComponents/TableContent";
+import TreeTableContent from "./components/ContentComponents/TreeTableContent";
+import Files from "./components/Files/Files";
 const App = () => {
   const themCtx = useTheme();
   const Badges = (
@@ -78,20 +80,38 @@ const App = () => {
       name: "Table",
       label: "Table",
       isVisible: false,
-      content: (
-        <Panel style={{ height: "400px", background: "cyan" }}>
-          <TableContent />
-        </Panel>
-      ),
+      content: <TableContent />,
     },
     {
       id: 4,
+      name: "TreeTable",
+      label: "Tree Table",
+      isVisible: false,
+      content: <TreeTableContent />,
+    },
+    {
+      id: 5,
       name: "Home",
       label: "Test sidebar",
       isVisible: false,
       content: (
         <Panel style={{ height: "400px", background: "cyan" }}>
           <h1>My Sidebar</h1>
+        </Panel>
+      ),
+    },
+    {
+      id: 6,
+      name: "Files",
+      label: "File explorer",
+      isVisible: false,
+      content: (
+        <Panel style={{ height: "400px" }}>
+          <Files
+            shouldPreview={true}
+            maximumFiles={200}
+            isMultipleUpload={true}
+          />
         </Panel>
       ),
     },

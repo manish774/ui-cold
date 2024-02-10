@@ -17,8 +17,24 @@ aside.sidebar-container {
     padding: 5px;
     text-align: center;
     border-bottom: 1px solid lightgray;
-    margin-top: 2px;
+
     cursor: pointer;
+  }
+
+  .nav-option.nav-active {
+    background-color: lightgray;
+  }
+  .nav-close {
+    visibility: hidden;
+  }
+  .main-option-container:hover {
+    .nav-close {
+      visibility: visible;
+    }
+    // background-color: rebeccapurple;
+    // .nav-close {
+    //   visibility: visible;
+    // }
   }
 }
 

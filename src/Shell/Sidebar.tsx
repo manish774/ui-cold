@@ -37,10 +37,10 @@ const Sidebar = ({ items }: SideProps) => {
   };
 
   const prepareNav = sidebarNavOptions.map((nav) => (
-    <>
+    <span className="main-option-container">
       <div
         key={nav?.name}
-        className="nav-option"
+        className={`nav-option nav-${nav?.isVisible ? "active" : ""}`}
         onClick={() => {
           showContent({ id: nav?.id });
         }}
@@ -51,10 +51,11 @@ const Sidebar = ({ items }: SideProps) => {
       <button
         style={{ float: "right", marginTop: "-22px" }}
         onClick={() => removeNav(nav?.id)}
+        className={"nav-close"}
       >
         x
       </button>
-    </>
+    </span>
   ));
   const viewPanel = sidebarNavOptions?.map((nav) => (
     <div key={nav?.name}>{nav?.isVisible && nav?.content}</div>
@@ -63,7 +64,8 @@ const Sidebar = ({ items }: SideProps) => {
   const removeNav = (id: any) => {
     if (sidebarNavOptions?.length > 1) {
       const navs = sidebarNavOptions?.filter((n) => n?.id !== id);
-      navs[0].isVisible = true;
+      const isHavingVisibleNav = navs?.some((n) => n?.isVisible);
+      if (!isHavingVisibleNav) navs[0].isVisible = true;
       setSideBarNavOptions(navs);
     }
   };

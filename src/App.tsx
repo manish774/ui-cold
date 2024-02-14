@@ -15,7 +15,7 @@ import Files from "./components/Files/Files";
 const App = () => {
   const themCtx = useTheme();
   const Badges = (
-    <Panel style={{ height: "400px", background: "cyan" }}>
+    <Panel style={{ height: "400px" }}>
       <>
         <h6>Badges</h6>
         <Badge label="Manish" type={"bordered"} theme={"danger"} />
@@ -27,7 +27,7 @@ const App = () => {
   );
 
   const circleBadges = (
-    <Panel style={{ height: "400px", background: "cyan" }}>
+    <Panel style={{ height: "400px" }}>
       <>
         <h6>Circle Badges</h6>
         <CircleBadge
@@ -123,7 +123,18 @@ const App = () => {
           { name: "Manish", linkTo: "/", label: "Home" },
           { name: "Manish", linkTo: "/", label: "About" },
         ]}
-        brandName={<>Brand</>}
+        brandName={
+          <>
+            Brand
+            <button
+              onClick={() => {
+                themCtx?.toggleTheme();
+              }}
+            >
+              Change Theme
+            </button>
+          </>
+        }
       />
       <Sidebar items={details} />
     </>

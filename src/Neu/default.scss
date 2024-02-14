@@ -4,8 +4,8 @@
     height: 20px;
     border: none;
     border-radius: 8px;
-    background-color: #f0f0f0;
-    box-shadow: 5px 5px 15px #bfbfbf, -5px -5px 15px #ffffff;
+    background-color: var(--bg-panel);
+    box-shadow: 3px 3px 3px var(--bg-panel), -3px -3px 3px var(--bg-panel);
     padding: 10px;
     outline: none;
     transition: box-shadow 0.3s ease-in-out;

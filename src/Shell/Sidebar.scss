@@ -1,13 +1,12 @@
 aside.sidebar-container {
   height: calc(100vh - 60px);
   width: 150px;
-  background-color: #f1f1f1;
-  box-shadow: 0px 0px 3px 3px lightgray;
+  background-color: var(--bg-panel);
+  box-shadow: var(--shadow-theme);
   position: fixed;
-  top: 60px;
   left: 0;
   z-index: 1;
-  padding-top: 50px;
+  padding-top: 0px;
   transition: width 0.3s ease;
   .nav-option:nth-child(2) {
     border-top: 1px solid lightgray;
@@ -22,7 +21,7 @@ aside.sidebar-container {
   }
 
   .nav-option.nav-active {
-    background-color: lightgray;
+    background-color: var(--selected-item);
   }
   .nav-close {
     visibility: hidden;
@@ -44,9 +43,9 @@ aside.sidebar-container.collapsed {
 
 aside.sidebar-container > .toggle-sidebar {
   position: absolute;
-  right: -0px;
-  top: 5px;
-  padding: 8px;
+  bottom: 0px;
+
+  right: 1px;
   border: none;
 }
 
@@ -58,6 +57,6 @@ aside.sidebar-container > .toggle-sidebar {
   float: right;
   width: calc(100% - 190px);
   height: calc(100vh - 100px);
-  background-color: lightgrey;
+  background-color: var(--bg-panel);
   padding: 20px;
 }

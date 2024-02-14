@@ -73,11 +73,10 @@ const Sidebar = ({ items }: SideProps) => {
   return (
     <>
       <aside className={`sidebar-container ${isCollapsed ? "collapsed" : ""}`}>
-        {/* Your sidebar content goes here */}
+        {prepareNav}
         <button onClick={handleToggleCollapse} className="toggle-sidebar">
           {collapseIcon}
         </button>
-        {prepareNav}
       </aside>
       <section className="main-container">
         <aside className="main-sidebar-right-container">{viewPanel}</aside>

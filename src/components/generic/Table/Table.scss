@@ -10,10 +10,10 @@ $shadow-dark: #141414;
   margin: 5px;
   padding: 15px;
   height: 100%;
-  background-color: $background-light;
-  transition: color 2s ease, background 2s ease;
+  background-color: var(--bg-panel);
+  transition: color 1s ease, background 2s ease;
   border-radius: 5px;
-
+  box-shadow: var(--shadow-theme);
   .table-main {
     // Add your styles for table-main here
   }
@@ -38,8 +38,7 @@ $shadow-dark: #141414;
     border-spacing: 0;
     border-radius: 5px;
     overflow: hidden;
-    background: #f0f0f0;
-    box-shadow: 5px 5px 15px $shadow-light, -5px -5px 15px #ffffff;
+    background: var(--bg-panel);
 
     tbody {
       max-height: 500px;
@@ -50,16 +49,16 @@ $shadow-dark: #141414;
   td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--selected-item);
     font-size: 14px;
   }
 
   th {
-    background-color: #f0f0f0;
+    background-color: var(--table-header);
   }
 
   tr:hover {
-    background-color: #e0e0e0;
+    background-color: var(--table-header);
   }
 
   .sort.asc::after {
@@ -138,7 +137,7 @@ $shadow-dark: #141414;
   td {
     padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: var(--selected-item);
     font-size: 14px;
   }
 

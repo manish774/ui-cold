@@ -1,9 +1,18 @@
-export * from "./Copy/Copy";
-export * from "./Files/Files";
-export * from "./ImageZoomer/ImageZoomer";
-export * from "./Modal/Modal";
-export * from "./Table/Table";
-export * from "./Table/TableRows";
-export * from "./Tree/Tree";
-export * from "./Tree/TreeColumns";
-export * from "./Tree/TreeRows";
+import { Copy } from "./Copy";
+import { Badge, CircleBadge, BadgeModel } from "./Badge";
+import { Breadcrumbs } from "./Breadcrumbs";
+import { Files } from "./Files";
+import { Input, Select, TableFooter, TableHeader } from "./generic";
+
+export {
+  Copy,
+  Badge,
+  CircleBadge,
+  BadgeModel,
+  Breadcrumbs,
+  Files,
+  Input,
+  Select,
+  TableFooter,
+  TableHeader,
+};

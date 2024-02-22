@@ -33,7 +33,7 @@ const TableFooter = ({
               type="number"
               max={totalPage}
               min={1}
-              value={currentPagination}
+              value={currentPagination || 1}
             />
             <span style={{ marginLeft: "5px" }}>of {totalPage}</span>
           </div>

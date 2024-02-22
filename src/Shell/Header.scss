@@ -3,7 +3,8 @@ header {
   background-color: var(--bg-panel);
   padding: 20px 10px;
   box-shadow: var(--shadow-theme);
-  position: relative;
+  position: fixed;
+  width: 100%;
   z-index: 2;
 }
 
@@ -26,15 +27,11 @@ header a.logo {
 }
 
 /* Change the background color on mouse-over */
-header a:hover {
-  background-color: #ddd;
-  color: black;
-}
 
 /* Style the active/current link*/
 header a.active {
   background-color: dodgerblue;
-  color: white;
+  color: var(--selected-item);
 }
 
 /* Float the link section to the right */

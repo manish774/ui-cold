@@ -11,7 +11,7 @@ $shadow-dark: #141414;
   padding: 15px;
   height: 100%;
   background-color: var(--bg-panel);
-  transition: color 1s ease, background 2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
   border-radius: 5px;
   box-shadow: var(--shadow-theme);
   .table-main {
@@ -97,7 +97,7 @@ $shadow-dark: #141414;
 .theme-dark {
   color: $text-dark !important;
   background-color: $background-dark;
-  transition: color 2s ease, background 2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 
   .table-main {
     min-height: 400px;
@@ -126,7 +126,7 @@ $shadow-dark: #141414;
     background: $background-dark;
     color: $text-dark;
     box-shadow: 5px 5px 15px $shadow-dark, -5px -5px 15px #0f0c0c;
-    transition: color 2s ease, background 2s ease;
+    transition: color 0.3s ease, background 0.3s ease;
 
     tbody {
       max-height: 500px;

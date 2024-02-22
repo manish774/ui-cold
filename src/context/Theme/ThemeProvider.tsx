@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ThemeContext } from "./ThemeContext";
+import { ThemeContext, themeTypes } from "./ThemeContext";
 
 const ThemeProvider = (props: any) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<themeTypes>("light");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const toggleTheme = (): void => {
-    const val = theme === "light" ? "dark" : "light";
-    setTheme(val);
+  const toggleTheme = (newTheme: themeTypes) => {
+    // const val = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
   };
 
   return (

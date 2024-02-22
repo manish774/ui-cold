@@ -31,7 +31,7 @@ const TableContent = () => {
   const config: tableConfig = {
     columns: [
       { name: "name", id: "name", searchable: true, sortable: true },
-      { name: "Position", id: "position", highLight: { color: "pink" } },
+      { name: "Position", id: "position", highLight: { color: "#8B8000" } },
       {
         name: "Position",
         id: "position",

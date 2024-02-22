@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 
+export type themeTypes = "light" | "dark" | "dark-pink";
 type ContextType = {
-  theme: "light" | "dark";
-  toggleTheme: () => void;
+  theme: themeTypes;
+  toggleTheme: (newTheme: themeTypes) => any;
 };
 
 export const ThemeContext = React.createContext<ContextType>({

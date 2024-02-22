@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.scss";
 import Panel from "../components/Panel/Panel";
 
@@ -9,24 +9,32 @@ interface SidebarProps<I, N, L, RC> {
   isVisible: boolean;
   content: RC;
 }
+
 interface SideProps {
   items: SidebarProps<string | number, string, string, React.ReactElement>[];
 }
+
 const Sidebar = ({ items }: SideProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  let [collapseIcon, setCollapseIcon] = useState("<");
+  const [collapseIcon, setCollapseIcon] = useState("<");
+  const [sidebarNavOptions, setSideBarNavOptions] = useState(
+    items ||
+      ([] as SidebarProps<
+        string | number,
+        string,
+        string,
+        React.ReactElement
+      >[])
+  );
+
+  useEffect(() => {
+    setSideBarNavOptions(items || []);
+  }, [items]);
+
   const handleToggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
     setCollapseIcon((prev) => (prev === "<" ? ">" : "<"));
   };
-
-  const initialSidebarNavOptions =
-    items ||
-    ([] as SidebarProps<string | number, string, string, React.ReactElement>[]);
-
-  const [sidebarNavOptions, setSideBarNavOptions] = useState(
-    initialSidebarNavOptions
-  );
 
   const showContent = ({ id }: any) => {
     const showContentById = sidebarNavOptions?.map((s) => ({
@@ -57,6 +65,7 @@ const Sidebar = ({ items }: SideProps) => {
       </button>
     </span>
   ));
+
   const viewPanel = sidebarNavOptions?.map((nav) => (
     <div key={nav?.name}>{nav?.isVisible && nav?.content}</div>
   ));

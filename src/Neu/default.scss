@@ -5,17 +5,18 @@
     border: none;
     border-radius: 8px;
     background-color: var(--bg-panel);
-    box-shadow: 3px 3px 3px var(--bg-panel), -3px -3px 3px var(--bg-panel);
+    box-shadow: var(--shadow-theme);
     padding: 10px;
     outline: none;
+    color: var(--text-color);
     transition: box-shadow 0.3s ease-in-out;
   }
   input:hover {
-    box-shadow: 7px 7px 20px #bfbfbf, -7px -7px 20px #ffffff;
+    box-shadow: var(--shadow-theme);
   }
   input:focus {
-    box-shadow: 7px 7px 20px #bfbfbf, -7px -7px 20px #ffffff,
-      inset 5px 5px 10px #bfbfbf, inset -5px -5px 10px #ffffff;
+    box-shadow: var(--shadow-theme), var(--shadow-theme-focus);
+    color: var(--text-color);
   }
 }
 
@@ -30,36 +31,21 @@
 }
 
 button {
-  background: #efefef;
   border: none;
   border-radius: 5px;
   color: #444;
   text-align: center;
   outline: none;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, 0.7),
-    -6px -6px 10px rgba(255, 255, 255, 0.5),
-    6px 6px 8px rgba(255, 255, 255, 0.075), 6px 6px 10px rgba(0, 0, 0, 0.15);
-}
-button:hover {
-  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6),
-    -2px -2px 4px rgba(255, 255, 255, 0.4),
-    2px 2px 2px rgba(255, 255, 255, 0.05), 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-button:active {
-  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.7),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.5),
-    inset 2px 2px 2px rgba(255, 255, 255, 0.075),
-    inset 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .neumorphic-select {
   position: relative;
   width: 200px;
-  background-color: #f0f0f0;
+  background-color: var(--bg-panel);
+  color: var(--text-color);
   border-radius: 10px;
-  box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff;
+  box-shadow: var(--shadow-theme);
   overflow: hidden;
   .selected-option {
     background-color: lightgray !important;
@@ -89,5 +75,5 @@ select {
 }
 
 .neumorphic-select:hover {
-  box-shadow: 5px 5px 10px #d9d9d9, -5px -5px 10px #ffffff;
+  box-shadow: var(--shadow-theme);
 }

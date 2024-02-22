@@ -1,16 +1,18 @@
 import React from "react";
 import "./Toggle.css";
-const Toggle = ({ style, label, onChangeTheme }: any) => {
+import Input from "./generic/Input";
+const Toggle = ({ style, label, onToggle }: any) => {
   return (
     <div style={style}>
       <label className="label">
         <div className="toggle">
-          <input
+          <Input
             className="toggle-state"
             type="checkbox"
-            name="check"
             value="check"
-            onChange={() => onChangeTheme()}
+            onchangeHandler={() => {
+              onToggle();
+            }}
           />
           <div className="indicator"></div>
         </div>

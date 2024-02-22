@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "..", "./src/index.tsx"),
+  entry: path.resolve(__dirname, "..", "./src/index.ts"),
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     symlinks: false,
@@ -14,16 +14,26 @@ module.exports = {
     port: 3000,
     hot: true,
   },
+  output: {
+    path: path.resolve(__dirname, "..", "./dist"),
+    filename: "index.js",
+    libraryTarget: "umd",
+    library: "ui-lib",
+    umdNamedDefine: true,
+  },
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.tsx?$/,
+        loader: "ts-loader", // Use TypeScript loader to transpile TS and TSX files
+        options: {
+          transpileOnly: true, // Enable transpile-only mode to speed up compilation
+        },
+      },
+      {
+        test: /\.jsx?$/,
+        loader: "babel-loader", // Use Babel to transpile JSX and ES6
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
       },
       {
         test: /\.scss$/,
@@ -58,21 +68,14 @@ module.exports = {
       },
     ],
   },
-  output: {
-    path: path.resolve(__dirname, "..", "./build"),
-    filename: "bundle.js",
-  },
+
   optimization: {
     removeAvailableModules: false,
     removeEmptyChunks: false,
     splitChunks: false,
   },
   mode: "development",
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "..", "./src/index.html"),
-    }),
-  ],
+
   stats: "errors-only",
   devtool: "source-map", //to debug
 };

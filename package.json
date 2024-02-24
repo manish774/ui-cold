@@ -5,13 +5,24 @@
   "description": "A React template with webpack configuration for easy project setup.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "webpack serve --config webpack/webpack.config.js --open",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "webpack --config webpack/webpack.config.js",
-    "prepublishOnly": "npm run build",
-    "tsc": "tsc"
+    "prepack": "npm-run-all build",
+    "clean": "shx rm -rf dist coverage",
+    "build": "npm-run-all clean build:*",
+    "build:modules": "babel --config-file ./babel.config.json --out-dir dist --copy-files --no-copy-ignored --extensions .ts,.tsx ./src",
+    "build:src": "shx cp -r ./src/* ./dist/ && shx rm -rf dist/**/__tests__ && shx rm -rf dist/**/__mocks__ && shx rm -rf dist/setupTests.tsx",
+    "test": "react-scripts test --coverage --verbose",
+    "lint": "tsc --noEmit && eslint src && prettier --check src",
+    "format": "eslint --fix src && prettier --write src",
+    "i18n:update": "ts-node scripts/UpdateTranslations && npm run format",
+    "generate": "ts-node scripts/GenerateSeedTranslations",
+    "postgenerate": "npm run i18n:update",
+    "start": "start-storybook -p 6006 -s public",
+    "clear-cache": "test-storybook --clearCache",
+    "test-story": "test-storybook --no-cache --coverage --maxWorkers=2",
+    "test-report": "npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook",
+    "test-storybook:eject": "test-storybook --eject",
+    "build-storybook": "build-storybook -o deployed-storybook",
+    "deploy-storybook": "npx http-server ./deployed-storybook"
   },
   "keywords": [
     "React",
@@ -33,12 +44,14 @@
     "react-jss": "^10.10.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "^5.0.1",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "shx": "^0.3.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
-    "@babel/preset-react": "^7.22.5",
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.22.5",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
@@ -55,6 +68,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "files": [
-    "./dist"
+    "dist"
   ]
 }

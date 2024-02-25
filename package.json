@@ -1,9 +1,13 @@
 {
   "name": "ui-cold",
   "homepage": "https://manish774.github.io/ui-cold/",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "A React template with webpack configuration for easy project setup.",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manish774/ui-cold"
+  },
   "scripts": {
     "prepack": "npm-run-all build",
     "clean": "shx rm -rf dist coverage",
@@ -16,13 +20,15 @@
     "i18n:update": "ts-node scripts/UpdateTranslations && npm run format",
     "generate": "ts-node scripts/GenerateSeedTranslations",
     "postgenerate": "npm run i18n:update",
+    "commit": "git-cz",
     "start": "start-storybook -p 6006 -s public",
     "clear-cache": "test-storybook --clearCache",
     "test-story": "test-storybook --no-cache --coverage --maxWorkers=2",
     "test-report": "npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook",
     "test-storybook:eject": "test-storybook --eject",
     "build-storybook": "build-storybook -o deployed-storybook",
-    "deploy-storybook": "npx http-server ./deployed-storybook"
+    "deploy-storybook": "npx http-server ./deployed-storybook",
+    "semantic-release": "semantic-release --branches main"
   },
   "keywords": [
     "React",
@@ -34,7 +40,7 @@
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
   },
-  "author": "manish",
+  "author": "Manish",
   "license": "MIT",
   "dependencies": {
     "gh-pages": "^6.1.0",
@@ -57,9 +63,11 @@
     "@types/react-dom": "^18.2.7",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
+    "cz-conventional-changelog": "^3.3.0",
     "html-webpack-plugin": "^5.5.3",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
+    "semantic-release": "^23.0.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.1",
     "typescript": "^5.1.6",
@@ -69,5 +77,10 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

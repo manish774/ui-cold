@@ -6,7 +6,7 @@ on:
 
 jobs:
   quality-check:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-lates
     strategy:
       matrix:
         nnode-version: [16.x]

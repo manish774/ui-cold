@@ -2,7 +2,7 @@
   "name": "ui-cold",
   "homepage": "https://manish774.github.io/ui-cold/",
   "version": "0.0.0-development",
-  "description": "A React template with webpack configuration for easy project setup.",
+  "description": "A React template with webpack configuration for easy project setup..",
   "main": "dist/index.js",
   "repository": {
     "type": "git",

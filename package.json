@@ -43,7 +43,6 @@
   "author": "Manish",
   "license": "MIT",
   "dependencies": {
-    "re-resizable": "^6.9.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jss": "^10.10.0",

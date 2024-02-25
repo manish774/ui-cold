@@ -1,24 +1,16 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Release ui-cold to npm
 
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: "*"
 
 jobs:
-  quality:
-    runs-on: ubuntu-latest
-
+  quality-check:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
         os: [ubuntu-latest, windows-latest]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -28,10 +20,10 @@ jobs:
       - run: npm ci
       - run: npm test
 
-  publish:
+  publish-release:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
-    needs: [quality]
+    needs: [quality-check]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}

@@ -19,7 +19,8 @@ jobs:
           # Defaults to the user or organization that owns the workflow file
           scope: "@octocat"
       - run: npm ci --legacy-peer-deps
-
+      - run: npm-run-all build
+        # Add the above line to run npm-run-all with your build script
       - run: npm publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

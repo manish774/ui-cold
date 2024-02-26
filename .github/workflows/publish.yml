@@ -1,7 +1,8 @@
 name: Publish package to GitHub Packages
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main # Change this to your main branch name if it's different
 jobs:
   build:
     runs-on: ubuntu-latest
